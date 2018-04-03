@@ -8,12 +8,20 @@ const port = env.PORT || 4000;
 const publicPath = path.resolve(__dirname, '../www');
 
 // configs
+
 app.use('/', express.static(publicPath));
+
+app.use(function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+  next();
+});
 
 // routes
 app.get('/resources', (req, res) => {
   fs.readFile('resources/productlist.json', 'utf8', function (err, data) {
-    res.end(data);
+    res.json(JSON.parse(data));
   });
 });
 
