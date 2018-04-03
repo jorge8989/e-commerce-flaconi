@@ -1,17 +1,20 @@
 const express = require('express');
 const path = require('path');
+const fs = require('fs');
 
 const app = express();
 const env = process.env;
-const port = env.PORT || 3001;
+const port = env.PORT || 4000;
 const publicPath = path.resolve(__dirname, '../www');
 
 // configs
 app.use('/', express.static(publicPath));
 
-app.get('/data', (req, res) => {
-  console.log('hello');
-  console.log(res);
+// routes
+app.get('/resources', (req, res) => {
+  fs.readFile('resources/productlist.json', 'utf8', function (err, data) {
+    res.end(data);
+  });
 });
 
 // run the server

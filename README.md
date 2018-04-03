@@ -12,10 +12,4 @@ Run `npm install` to install dependencies
 
 Run `npm run dev` and the server will be up in port 3001 with hot reloading enabled.
 
-## Production
-
-Run the following to generate the production build
-
-```
-npm run build
-```
+To run node server cd into task folder and than run `node server.js`
