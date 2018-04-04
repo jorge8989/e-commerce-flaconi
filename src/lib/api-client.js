@@ -13,7 +13,7 @@ const ApiClient = {
       headers,
     })
     .then((resp) => {
-      if (resp.status === 201) return resp.json();
+      if (resp.status === 200) return resp.json();
       return false;
     })
     .catch(e => alert(e));

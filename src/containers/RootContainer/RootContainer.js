@@ -4,7 +4,6 @@ import _ from 'underscore';
 import ApiClient from './../../lib/api-client';
 import './RootContainer.scss';
 import Header from './../../components/Header/Header';
-import productData from './../../../server/resources/productlist.json';
 
 const sortByOptions = ['name', 'brand', 'type', 'price', 'size', 'rating'];
 export default class RootContainer extends Component {
@@ -13,12 +12,21 @@ export default class RootContainer extends Component {
     super(props);
 
     this.state = {
-      products: productData,
+      products: [],
       sotyBySelectedValue: '',
       displayItems: 12,
     };
     this.handleChange = this.handleChange.bind(this);
     this.loadMoreProduct = this.loadMoreProduct.bind(this);
+  }
+
+  componentDidMount() {
+    ApiClient.products()
+    .then((data) => {
+      this.setState({
+        products: data,
+      });
+    });
   }
 
   handleChange(e) {
