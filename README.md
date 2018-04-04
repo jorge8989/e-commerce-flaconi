@@ -1,15 +1,23 @@
-# Task
-
 ### Requirements
 
-1. Node.js
+Node.js
 
 ### Setup
 
+clone the repo
 Run `npm install` to install dependencies
 
 ### Run locally
 
-Run `npm run dev` and the server will be up in port 3001 with hot reloading enabled.
+1. run `npm run dev` and the server will be up in port 3001 with hot reloading enabled.
+2. open second terminal and cd into server folder. To run node server, run  `node server.js`
 
-To run node server cd into task folder and than run `node server.js`
+## Compiled Build
+
+Run the following to generate the Compiled build
+
+```
+npm run build
+```
+
+www folder will generate compiled version
