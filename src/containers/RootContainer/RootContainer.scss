@@ -64,6 +64,16 @@ body {
       }
     }
   }
+
+  .sortBy {
+    padding: 1rem;
+    width: 5rem;
+
+    select {
+      width: 10rem;
+      border: 1px solid black;
+    }
+  }
 }
 
 @media (min-width: 34em) {
