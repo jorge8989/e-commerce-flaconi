@@ -1,3 +1,99 @@
 body {
   margin: 0;
 }
+
+.container {
+  margin-top: 40px;
+
+  .card {
+    padding: 2rem;
+
+    &:hover {
+      border: 1px solid rgba(0,0,0,0.525);
+    }
+
+    .product-name {
+      font-size: 0.85rem;
+    }
+
+    .price {
+      color: #83122a;
+      font-weight: 700;
+      font-size: .80rem;
+    }
+
+    .base-price {
+      font-size: .75rem;
+      color: #000;
+    }
+
+    .type {
+      color: #737373;
+      margin-bottom: 7px;
+      font-size: 0.8rem;
+    }
+
+    .ratings {
+      position: relative;
+      vertical-align: middle;
+      display: inline-block;
+      color: #b1b1b1;
+      overflow: hidden;
+    }
+
+    .full-stars{
+      position: absolute;
+      left: 0;
+      top: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      color: #5e5151;
+
+      &:before {
+        content: "\2605\2605\2605\2605\2605";
+        font-size: 14pt;
+        -webkit-text-stroke: 1px black;
+      }
+    }
+
+    .empty-stars {
+      &:before {
+        content: "\2605\2605\2605\2605\2605";
+        font-size: 14pt;
+        -webkit-text-stroke: 1px #848484;
+      }
+    }
+  }
+}
+
+@media (min-width: 34em) {
+  .card-columns {
+      -webkit-column-count: 2;
+      -moz-column-count: 2;
+      column-count: 2;
+  }
+}
+
+@media (min-width: 48em) {
+  .card-columns {
+      -webkit-column-count: 3;
+      -moz-column-count: 3;
+      column-count: 3;
+  }
+}
+
+@media (min-width: 62em) {
+  .card-columns {
+      -webkit-column-count: 4;
+      -moz-column-count: 4;
+      column-count: 4;
+  }
+}
+
+@media (min-width: 75em) {
+  .card-columns {
+      -webkit-column-count: 4;
+      -moz-column-count: 4;
+      column-count: 4;
+  }
+}
