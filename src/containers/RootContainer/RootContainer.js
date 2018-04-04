@@ -15,14 +15,22 @@ export default class RootContainer extends Component {
     this.state = {
       products: productData,
       sotyBySelectedValue: '',
+      displayItems: 12,
     };
     this.handleChange = this.handleChange.bind(this);
+    this.loadMoreProduct = this.loadMoreProduct.bind(this);
   }
 
   handleChange(e) {
     this.setState({
       sotyBySelectedValue: e.target.value,
       products: _.sortBy(this.state.products, e.target.value),
+    });
+  }
+
+  loadMoreProduct() {
+    this.setState({
+      displayItems: this.state.displayItems + 12,
     });
   }
 
@@ -49,7 +57,8 @@ export default class RootContainer extends Component {
   }
 
   render() {
-    const productGrid = _.map(this.state.products, (item, k) => {
+    const displayProducts = this.state.products.slice(0, this.state.displayItems);
+    const productGrid = _.map(displayProducts, (item, k) => {
       return this.renderProduct(item, k);
     });
 
@@ -58,6 +67,14 @@ export default class RootContainer extends Component {
         <option value={option} key={key}>{option}</option>
       );
     });
+
+    const displayLoadMoreButton = this.state.displayItems <= this.state.products.length ? (
+      <button
+        type="button"
+        className="btn btn-secondary btn-lg btn-block"
+        onClick={this.loadMoreProduct}
+      >Load More</button>
+    ) : null;
 
     return (
       <div className="root-container">
@@ -74,6 +91,7 @@ export default class RootContainer extends Component {
           <div className="card-columns">
             {productGrid}
           </div>
+          {displayLoadMoreButton}
         </div>
       </div>
     );
